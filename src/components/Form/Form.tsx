@@ -15,6 +15,7 @@ const Form = () => {
         </label>
       </div>
       <button>Add</button>
+      <button>Clear</button>
     </form>
   );
 };
