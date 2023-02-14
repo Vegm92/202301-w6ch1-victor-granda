@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormStyled from "./FormStyled";
 
 const Form = () => {
   const [todos, setTodos] = useState([]);
@@ -8,15 +9,17 @@ const Form = () => {
   };
 
   return (
-    <form>
-      <div>
-        <label htmlFor="name">
-          <input type="text" onChange={handleChange} value={todos} />
-        </label>
-      </div>
-      <button>Add</button>
-      <button>Clear</button>
-    </form>
+    <>
+      <FormStyled className="form">
+        <div>
+          <label htmlFor="name">
+            <input type="form__input" onChange={handleChange} value={todos} />
+          </label>
+        </div>
+        <button className="form__button-add">Add</button>
+        <button className="form__button-clear">Clear</button>
+      </FormStyled>
+    </>
   );
 };
 

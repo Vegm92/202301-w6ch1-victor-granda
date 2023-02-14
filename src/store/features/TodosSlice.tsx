@@ -14,4 +14,4 @@ export const todosSlice = createSlice({
   },
 });
 
-export const { loadTodos: loadTodosActionCreator } = todosSlice.actions;
+export const todosReducer = todosSlice.reducer;
