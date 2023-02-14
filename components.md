@@ -13,6 +13,7 @@
 - Delete todo
 - Update todo
 - Create a todo
+- Load a Todo list
 
 # COMPONENTS
 
