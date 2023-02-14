@@ -1,8 +1,8 @@
-import { TodosStructure } from "../../data/types";
+import { TodoStructure } from "../../data/types";
 import TodoStyled from "./TodoStyled";
 
 export interface TodoProps {
-  todo: TodosStructure;
+  todo: TodoStructure;
 }
 
 const Todo = ({ todo: { id, isDone, name } }: TodoProps): JSX.Element => {

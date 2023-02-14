@@ -6,9 +6,7 @@ const TodoList = (): JSX.Element => {
   return (
     <TodosListStyled>
       {listChapa.map((todo) => (
-        <li key={todo.id}>
-          <Todo todo={todo} />
-        </li>
+        <Todo key={todo.id} todo={todo} />
       ))}
     </TodosListStyled>
   );

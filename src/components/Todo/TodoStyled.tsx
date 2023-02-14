@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
-const TodoStyled = styled.div``;
+const TodoStyled = styled.li`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export default TodoStyled;

@@ -1,7 +1,7 @@
-export interface TodosStructure {
+export interface TodoStructure {
   id: number;
   name: string;
   isDone: boolean;
 }
 
-export type TodosListStructure = TodosStructure[];
+export type TodosListStructure = TodoStructure[];
