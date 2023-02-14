@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodosListStructure } from "../../data/types";
+import { TodosListStructure } from "../data/types";
 
 export const initialTodos: TodosListStructure = [];
 

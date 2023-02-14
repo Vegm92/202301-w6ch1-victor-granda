@@ -1,13 +1,11 @@
-import { useAppSelector } from "../../store/hooks";
+import listChapa from "../../data/Listchapa";
 import Todo from "../Todo/Todo";
 import TodosListStyled from "../TodoList/TodoListStyled";
 
 const TodoList = (): JSX.Element => {
-  const { todos } = useAppSelector((todo) => todo);
-
   return (
     <TodosListStyled>
-      {todos.map((todo) => (
+      {listChapa.map((todo) => (
         <li key={todo.id}>
           <Todo todo={todo} />
         </li>
