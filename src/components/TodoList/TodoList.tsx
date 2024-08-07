@@ -1,11 +1,16 @@
-import listChapa from "../../data/Listchapa";
+import React from "react";
+import { TodoStructure } from "../../data/types";
 import Todo from "../Todo/Todo";
-import TodosListStyled from "../TodoList/TodoListStyled";
+import TodosListStyled from "./TodoListStyled";
 
-const TodoList = (): JSX.Element => {
+interface TodoListProps {
+  todos: TodoStructure[];
+}
+
+const TodoList = ({ todos }: TodoListProps): JSX.Element => {
   return (
     <TodosListStyled>
-      {listChapa.map((todo) => (
+      {todos.map((todo) => (
         <Todo key={todo.id} todo={todo} />
       ))}
     </TodosListStyled>
