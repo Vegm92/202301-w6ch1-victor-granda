@@ -1,29 +1,53 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodosListStructure } from "../../data/types";
+import { TodosListStructure, TodoStructure } from "../../data/types";
 
-export const initialTodos: TodosListStructure = [];
+interface TodosState {
+  todos: TodosListStructure;
+  completedTasks: TodosListStructure;
+  deletedTasks: TodosListStructure;
+}
+
+const initialState: TodosState = {
+  todos: [],
+  completedTasks: [],
+  deletedTasks: [],
+};
 
 export const todosSlice = createSlice({
   name: "todos",
-  initialState: initialTodos,
+  initialState,
   reducers: {
-    loadTodos: (
-      currentTodos: TodosListStructure,
-      action: PayloadAction<TodosListStructure>
-    ) => [...action.payload],
-    removeTodos: (currentTodos, action: PayloadAction<number>) =>
-      currentTodos.filter((todos) => todos.id !== action.payload),
-    toggleTodos: (currentTodos, action: PayloadAction<number>) =>
-      currentTodos.map((todo) => ({
-        ...todo,
-        isDone: todo.id === action.payload ? !todo.isDone : todo.isDone,
-      })),
+    loadTodos: (state, action: PayloadAction<TodosListStructure>) => {
+      state.todos = action.payload;
+    },
+    addTodo: (state, action: PayloadAction<Omit<TodoStructure, "id">>) => {
+      state.todos.push({ ...action.payload, id: Date.now() });
+    },
+    removeTodo: (state, action: PayloadAction<number>) => {
+      const removedTodo = state.todos.find(
+        (todo) => todo.id === action.payload
+      );
+      if (removedTodo) {
+        state.deletedTasks.push(removedTodo);
+        state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      }
+    },
+    toggleTodo: (state, action: PayloadAction<number>) => {
+      const todo = state.todos.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.isDone = !todo.isDone;
+        if (todo.isDone) {
+          state.completedTasks.push({ ...todo });
+        } else {
+          state.completedTasks = state.completedTasks.filter(
+            (t) => t.id !== todo.id
+          );
+        }
+      }
+    },
   },
 });
 
 export const todosReducer = todosSlice.reducer;
-export const {
-  loadTodos: loadTodosActionCreators,
-  removeTodos: removeTodosActionCreator,
-  toggleTodos: toggleTodosIsDoneActionCreators,
-} = todosSlice.actions;
+export const { loadTodos, addTodo, removeTodo, toggleTodo } =
+  todosSlice.actions;

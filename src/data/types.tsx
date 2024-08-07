@@ -5,3 +5,9 @@ export interface TodoStructure {
 }
 
 export type TodosListStructure = TodoStructure[];
+
+export interface TodosState {
+  todos: TodosListStructure;
+  completedTasks: TodosListStructure;
+  deletedTasks: TodosListStructure;
+}
